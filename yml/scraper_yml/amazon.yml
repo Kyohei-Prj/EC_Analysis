@@ -1,6 +1,6 @@
 name: 'amazon'
 main_url: 'https://www.amazon.co.jp'
-keywords: ['化粧落とし']
+keywords: ['アンテナケーブル', 'ウォータークーラー']
 button_id: 'twotabsearchtextbox'
 button_press: 'nav-input'
 sleep: 20

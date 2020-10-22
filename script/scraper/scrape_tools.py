@@ -118,7 +118,6 @@ class ScrapeStore:
             save_dict[key] = save_list
 
         df = pd.DataFrame.from_dict(save_dict, orient='index').T
-        df = df[1::2]
         save_to = save_path + self.name + '_' + content + '.csv'
         if (os.path.exists(save_to)):
             df_arch = pd.read_csv(save_to)

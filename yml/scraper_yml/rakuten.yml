@@ -1,6 +1,6 @@
 name: 'rakuten'
 main_url: 'https://search.rakuten.co.jp/search/mall/'
-keywords: ['スマートフォン', 'エプソン']
+keywords: ['アンテナケーブル', 'ウォータークーラー']
 button_id: 'ri-cmn-hdr-sitem'
 button_press: 'ri-cmn-hdr-search-btn'
 sleep: 15
