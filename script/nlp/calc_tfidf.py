@@ -52,7 +52,7 @@ def sort_result(features, tfidf):
             for ky, val in sorted(result_dict.items(),
                                   key=lambda item: item[1], reverse=True)
         }
-    result_list.append(result_dict_sort)
+        result_list.append(result_dict_sort)
 
     return result_list
 
@@ -71,15 +71,17 @@ def print_top_n(result_list, n):
         print()
 
 
-def save_result(result_list, col_names):
+def save_result(result_list, col_names, n):
 
     for result_dict, col in zip(result_list, col_names):
         word_list = []
         value_list = []
         print(col)
-        for key in result_dict.keys():
+        for index, key in enumerate(result_dict.keys()):
             word_list.append(key)
             value_list.append(result_dict[key])
+            if index > n:
+                break
         df = pd.DataFrame({col: word_list, 'tfidf': value_list})
         save_path = '../../data/tfidf/' + 'tfidf_' + col + '.csv'
         df.to_csv(save_path, index=False)
@@ -94,7 +96,7 @@ def main():
     features, tfidf = calc_tfidf(corpus)
     result_list = sort_result(features, tfidf)
     print(df.columns.to_list())
-    save_result(result_list, df.columns.to_list())
+    save_result(result_list, df.columns.to_list(), int(sys.argv[2]))
 
 
 if __name__ == '__main__':
