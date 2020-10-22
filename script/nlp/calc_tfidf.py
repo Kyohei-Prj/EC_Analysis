@@ -1,6 +1,7 @@
 from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.tokenfilter import POSStopFilter
+from janome.tokenfilter import POSKeepFilter
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import sys
@@ -9,7 +10,8 @@ import sys
 def tokenize(df):
 
     tokenizer = Tokenizer()
-    token_filters = [POSStopFilter(['記号', '助詞', '助動詞'])]
+    #token_filters = [POSStopFilter(['記号', '助詞', '助動詞'])]
+    token_filters = [POSKeepFilter(['名詞'])]
     analysis = Analyzer(tokenizer=tokenizer, token_filters=token_filters)
 
     corpus = []
