@@ -1,7 +1,7 @@
 from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
-from janome.tokenfilter import POSStopFilter
 from janome.tokenfilter import POSKeepFilter
+# from janome.tokenfilter import POSStopFilter
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import sys
@@ -10,7 +10,7 @@ import sys
 def tokenize(df):
 
     tokenizer = Tokenizer()
-    #token_filters = [POSStopFilter(['記号', '助詞', '助動詞'])]
+    # token_filters = [POSStopFilter(['記号', '助詞', '助動詞'])]
     token_filters = [POSKeepFilter(['名詞'])]
     analysis = Analyzer(tokenizer=tokenizer, token_filters=token_filters)
 
@@ -86,7 +86,7 @@ def save_result(result_list, col_names, n):
                 break
         df = pd.DataFrame({col: word_list, 'tfidf': value_list})
         save_path = '../../data/tfidf/' + 'tfidf_' + col + '.csv'
-        df.to_csv(save_path, index=False)
+        df.to_csv(save_path, index=False, encoding='utf_8_sig')
 
 
 def main():
